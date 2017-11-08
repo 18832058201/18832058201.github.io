@@ -134,12 +134,12 @@
 <meta property="og:description" content="前言：最近在开发一个科研信息管理系统，由于涉及到权限管理，就有幸接触到shiro这个框架，以下便是我学习shiro过程中的一些笔记及学习心得。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://pursuedream-blog.oss-cn-beijing.aliyuncs.com/blogImg/20170814213828.png">
-<meta property="og:image" content="http://pursuedream-blog.oss-cn-beijing.aliyuncs.com/blogImg/20170824230756.png">
-<meta property="og:image" content="http://pursuedream-blog.oss-cn-beijing.aliyuncs.com/blogImg/20170824230756.png">
+<meta property="og:image" content="http://pursuedream-blog.oss-cn-beijing.aliyuncs.com/blogImg/20171108095003.png">
+<meta property="og:image" content="http://pursuedream-blog.oss-cn-beijing.aliyuncs.com/blogImg/20171108094702.png">
 <meta property="og:image" content="http://pursuedream-blog.oss-cn-beijing.aliyuncs.com/blogImg/20170824230758.png">
 <meta property="og:image" content="http://pursuedream-blog.oss-cn-beijing.aliyuncs.com/blogImg/20170824230760.png">
 <meta property="og:image" content="http://pursuedream-blog.oss-cn-beijing.aliyuncs.com/blogImg/20171107222303.png">
-<meta property="og:updated_time" content="2017-11-07T15:00:48.000Z">
+<meta property="og:updated_time" content="2017-11-08T01:50:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shiro学习（一）--- 权限管理入门">
 <meta name="twitter:description" content="前言：最近在开发一个科研信息管理系统，由于涉及到权限管理，就有幸接触到shiro这个框架，以下便是我学习shiro过程中的一些笔记及学习心得。">
@@ -478,12 +478,12 @@
 <p>身份认证，就是判断一个用户是否为合法用户的处理过程。最常用的简单身份认证方式是系统通过核对用户输入的用户名和口令，看其是否与系统中存储的该用户的用户名和口令一致，来判断用户身份是否正确。</p>
 </blockquote>
 </li>
-<li>用户名密码身份认证流程<br><img src="http://pursuedream-blog.oss-cn-beijing.aliyuncs.com/blogImg/20170824230756.png" style="border:none"></li>
+<li>用户名密码身份认证流程<br><img src="http://pursuedream-blog.oss-cn-beijing.aliyuncs.com/blogImg/20171108095003.png" style="border:none"></li>
 <li>关键对象<br>上边的流程图中需要理解以下关键对象：<br><strong>Subject：主体</strong><br>访问系统的用户，主体可以是用户、程序等，进行认证的都称为主体；<br><strong>Principal：身份信息</strong><br>是主体（subject）进行身份认证的标识，标识必须具有唯一性，如用户名、手机号、邮箱地址等，一个主体可以有多个身份，但是必须有一个主身份（Primary Principal）。<br><strong>credential：凭证信息</strong><br>是只有主体自己知道的安全信息，如密码、证书等。<br><em>注：这几个关键对象在后面的程序中还会讲到 </em></li>
 </ol>
 <h2 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h2><ol>
 <li>概念：<br>授权，即访问控制，控制谁能访问哪些资源。主体进行身份认证后需要分配权限（授权）方可访问系统的资源，对于没有权限某的资源是无法访问的。</li>
-<li>授权流程图<br><img src="http://pursuedream-blog.oss-cn-beijing.aliyuncs.com/blogImg/20170824230756.png" style="border:none"></li>
+<li>授权流程图<br><img src="http://pursuedream-blog.oss-cn-beijing.aliyuncs.com/blogImg/20171108094702.png" style="border:none"></li>
 <li>关键对象<br>授权可简单理解为who对what(which)进行How操作：<br><strong>Who，即主体（Subject）</strong>，主体需要访问系统中的资源。<br><strong>What，即资源（Resource）</strong>，如系统菜单、页面、按钮、类方法、系统商品信息等。资源包括资源类型和资源实例，比如商品信息为资源类型，类型为t01的商品为资源实例，编号为001的商品信息也属于资源实例。<br><strong>How，权限/许可（Permission</strong>），规定了主体对资源的操作许可，权限离开资源没有意义，如用户查询权限、用户添加权限、某个类方法的调用权限、编号为001用户的修改权限等，通过权限可知主体对哪些资源都有哪些操作许可。<br>权限分为粗颗粒和细颗粒，粗颗粒权限是指对资源类型的权限，细颗粒权限是对资源实例的权限。 （下文也会详细讲解这两者的区别）</li>
 </ol>
 <h2 id="权限模型"><a href="#权限模型" class="headerlink" title="权限模型"></a>权限模型</h2><p>通过对上面主体、资源、权限的分析，可以用以下数据模型表示：</p>
